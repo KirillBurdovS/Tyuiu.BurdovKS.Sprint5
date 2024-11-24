@@ -1,17 +1,12 @@
 ﻿
-
-
-using Tyuiu.BurdovKS.Sprint5.Task0.V18.Lib;
-
+using Tyuiu.BurdovKS.Sprint5.Task0.V18.Lib; 
 using System.IO;
-
 
 class Program
 {
     static void Main(string[] args)
     {
-
-        DataService ds = new DataService();
+       DataService ds = new DataService();
 
 
         Console.Title = "Спринт #5 | Выполнил: Бурдов.К.С | СМАРТБ-24-1";
@@ -43,5 +38,5 @@ class Program
         Console.WriteLine("Файл: " + result);
         Console.WriteLine("Создан!");
         Console.ReadKey();
-    }
+    } 
 }
