@@ -27,15 +27,9 @@ namespace Tyuiu.BurdovKS.Sprint5.Task4.V29.Lib
                 throw new FormatException($"Строка '{strX}' не содержит корректное числовое значение.");
             }
 
-            double a = 2 * x;
 
-            double b = x / a;
 
-            double c = Math.Pow(Math.Sin(x), 2);
-
-            double res = b + c;
-
-            double result = Math.Round(res, 3);
+            double result = Math.Round((x / 2 * x) + Math.Pow(Math.Sin(x), 2), 3);
 
             
             return result;
