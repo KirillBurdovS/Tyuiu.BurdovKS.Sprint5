@@ -25,7 +25,7 @@ namespace Tyuiu.BurdovKS.Sprint5.Task5.V24.Lib
                     {
                         double lineParse = double.Parse(number);
 
-                        if (lineParse % 2 == 0 && Math.Abs(lineParse) >= 10 && Math.Abs(lineParse) < 100 && lineParse % 1 == 0)
+                        if (lineParse % 2 == 0)
                         {
                             
                             res += lineParse;
