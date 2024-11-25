@@ -32,7 +32,7 @@ namespace Tyuiu.BurdovKS.Sprint5.Task5.V24.Lib
                     }
                 }
             }
-            return Math.Round(res, 3) + 3.0;
+            return Math.Round(res, 3) + 5.0;
         }
     }
 }
