@@ -27,14 +27,11 @@ namespace Tyuiu.BurdovKS.Sprint5.Task5.V24.Lib
 
                         if (lineParse % 2 == 0)
                         {
-                            
                             res += lineParse;
                         }
                     }
                 }
             }
-
-            
             return Math.Round(res, 3);
         }
     }
