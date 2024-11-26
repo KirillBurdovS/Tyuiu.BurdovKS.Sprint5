@@ -11,22 +11,15 @@ namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
         public string LoadDataAndSave(string path)
         {
 
-
             string str = File.ReadAllText(path);
-            int n = 0;
-            foreach (char c in str)
-            {
-                if (Char.IsNumber(c))
-                    str = str.Replace(Convert.ToString(c), string.Empty);
-            }
+            str = string.Concat(str.Where(c => !Char.IsNumber(c)));
 
-            string outpath = $@"{Directory.GetCurrentDirectory()}\OutPutDataFileTask7V1.txt.";
+            string outpath = $@"{Directory.GetCurrentDirectory()}\OutPutDataFileTask7V1.txt";
             FileInfo fileinfo = new FileInfo(outpath);
-            {
-                if (fileinfo.Exists)
-                    File.Delete(outpath);
-                File.AppendAllText(outpath, str);
-            }
+            if (fileinfo.Exists)
+                File.Delete(outpath);
+            
+            File.WriteAllText(outpath, str);
             return outpath;
         }
     }
