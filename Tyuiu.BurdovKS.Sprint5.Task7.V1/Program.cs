@@ -5,6 +5,7 @@
 using Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib;
 
 using System.IO;
+using System.Text.RegularExpressions;
 
 
 
@@ -27,20 +28,24 @@ class Program
         Console.WriteLine("***************************************************************************");
 
         DataService ds = new DataService();
-        string path = Path.Combine(new string[] { Path.GetTempPath(), "InPutDataFileTask7V1.txt" });
 
 
 
 
-
-        Console.WriteLine("данные находятся в файле " + path);
+        string path = @"C:\DataSprint5\InPutDataFileTask7V1.txt";
+        Console.WriteLine("Исходные данные находятся в файле: " + path);
 
         Console.WriteLine("***************************************************************************");
         Console.WriteLine("* РЕЗУЛЬТАТ:                                                              *");
         Console.WriteLine("***************************************************************************");
 
-        string res = ds.LoadDataAndSave(path);
-        Console.WriteLine(res);
+        string pathSaveFile = @"C:\DataSprint5\OutPutDataFileTask7V1.txt";
+        Console.WriteLine("Конечные данные находятся в файле: " + pathSaveFile);
 
+       
+
+
+        Console.ReadKey();
     }
 }
+

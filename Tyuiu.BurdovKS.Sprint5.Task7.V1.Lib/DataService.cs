@@ -2,7 +2,13 @@
 
 
 
+using System.Text.RegularExpressions;
 using tyuiu.cources.programming.interfaces.Sprint5;
+
+
+using System.IO;
+
+
 
 namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
 {
@@ -11,16 +17,42 @@ namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
         public string LoadDataAndSave(string path)
         {
 
-            string str = File.ReadAllText(path);
-            str = string.Concat(str.Where(c => !Char.IsNumber(c)));
 
-            string outpath = $@"{Directory.GetCurrentDirectory()}\OutPutDataFileTask7V1.txt";
-            FileInfo fileinfo = new FileInfo(outpath);
-            if (fileinfo.Exists)
-                File.Delete(outpath);
-            
-            File.WriteAllText(outpath, str);
-            return outpath;
+
+            string pathSaveFile = @"C:\Users\user\source\repos\Tyuiu.BurdovKS.Sprint5\Tyuiu.BurdovKS.Sprint5.Task7.V1\bin\Debug\net8.0OutPutDataFileTask7V1.txt";
+
+            FileInfo fileInfo = new FileInfo(pathSaveFile);
+            bool fileExists = fileInfo.Exists;
+
+
+            char[] nums = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
+
+            if (fileExists)
+            {
+                File.Delete(pathSaveFile);
+
+            }
+
+            string strLine = "";
+            using (StreamReader reader = new StreamReader(path))
+            {
+                string line;
+
+                while ((line = reader.ReadLine()) != null)
+                {
+                    for (int i = 0; i < line.Length; i++)
+                    {
+                        char c = line[i];
+                        if (Array.IndexOf(nums, c) < 0)
+                        {
+                            strLine = strLine + line[i];
+                        }
+                    }
+                    File.AppendAllText(pathSaveFile, strLine + Environment.NewLine);
+                    strLine = "";
+                }
+            }
+            return pathSaveFile;
         }
     }
 }
