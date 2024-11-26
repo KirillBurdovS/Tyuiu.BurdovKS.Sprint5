@@ -19,27 +19,38 @@ namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
 
 
 
-            string pathSaveFile = @"C:\Users\user\source\repos\Tyuiu.BurdovKS.Sprint5\Tyuiu.BurdovKS.Sprint5.Task7.V1\bin\Debug\net8.0OutPutDataFileTask7V1.txt";
+            //string pathSaveFile = @"C:\Users\user\source\repos\Tyuiu.BurdovKS.Sprint5\Tyuiu.BurdovKS.Sprint5.Task7.V1\bin\Debug\net8.0OutPutDataFileTask7V1.txt";
 
-            // Проверяем, существует ли файл
             if (!File.Exists(path))
             {
                 throw new FileNotFoundException("Файл не найден.", path);
             }
 
-            // Считываем данные из файла
-            string data = File.ReadAllText(path);
+            // Создаем путь к выходному файлу
+            string pathSaveFile = @"C:\Users\user\source\repos\Tyuiu.BurdovKS.Sprint5\Tyuiu.BurdovKS.Sprint5.Task7.V1\bin\Debug\net8.0\OutPutDataFileTask7V1.txt";
+
+            // Проверяем, существует ли выходной файл
+            FileInfo fileInfo = new FileInfo(pathSaveFile);
+            bool fileExists = fileInfo.Exists;
+
+            // Если выходной файл существует, удаляем его
+            if (fileExists)
+            {
+                fileInfo.Delete();
+            }
+
+            // Считываем данные из входного файла и удаляем символы новой строки в конце
+            string data = File.ReadAllText(path).TrimEnd();
 
             // Удаляем все цифры из данных
             data = Regex.Replace(data, @"\d", "");
 
-            // Создаем временный файл с уникальным именем
-            string outpath = Path.GetTempFileName();
-
             // Записываем данные во временный файл
-            File.WriteAllText(outpath, data);
+            File.WriteAllText(pathSaveFile, data);
 
-            return outpath;
+            // Возвращаем путь к выходному файлу
+            return pathSaveFile;
         }
     }
 }
+
