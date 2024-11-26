@@ -13,7 +13,7 @@ namespace Tyuiu.BurdovKS.Sprint5.Task6.V20.Lib
         public int LoadFromDataFile(string path)
         {
 
-            int count = 0;
+            int count = 1;
             using (StreamReader reader = new StreamReader(path))
             {
                 string line;
