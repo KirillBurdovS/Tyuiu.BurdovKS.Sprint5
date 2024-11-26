@@ -21,38 +21,25 @@ namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
 
             string pathSaveFile = @"C:\Users\user\source\repos\Tyuiu.BurdovKS.Sprint5\Tyuiu.BurdovKS.Sprint5.Task7.V1\bin\Debug\net8.0OutPutDataFileTask7V1.txt";
 
-            FileInfo fileInfo = new FileInfo(pathSaveFile);
-            bool fileExists = fileInfo.Exists;
-
-
-            char[] nums = { '1', '2', '3', '4', '5', '6', '7', '8', '9', '0' };
-
-            if (fileExists)
+            // Проверяем, существует ли файл
+            if (!File.Exists(path))
             {
-                File.Delete(pathSaveFile);
-
+                throw new FileNotFoundException("Файл не найден.", path);
             }
 
-            string strLine = "";
-            using (StreamReader reader = new StreamReader(path))
-            {
-                string line;
+            // Считываем данные из файла
+            string data = File.ReadAllText(path);
 
-                while ((line = reader.ReadLine()) != null)
-                {
-                    for (int i = 0; i < line.Length; i++)
-                    {
-                        char c = line[i];
-                        if (Array.IndexOf(nums, c) < 0)
-                        {
-                            strLine = strLine + line[i];
-                        }
-                    }
-                    File.AppendAllText(pathSaveFile, strLine + Environment.NewLine);
-                    strLine = "";
-                }
-            }
-            return pathSaveFile;
+            // Удаляем все цифры из данных
+            data = Regex.Replace(data, @"\d", "");
+
+            // Создаем временный файл с уникальным именем
+            string outpath = Path.GetTempFileName();
+
+            // Записываем данные во временный файл
+            File.WriteAllText(outpath, data);
+
+            return outpath;
         }
     }
 }
