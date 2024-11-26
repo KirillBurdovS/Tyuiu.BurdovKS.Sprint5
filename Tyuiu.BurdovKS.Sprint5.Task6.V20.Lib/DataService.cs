@@ -29,7 +29,7 @@ namespace Tyuiu.BurdovKS.Sprint5.Task6.V20.Lib
                     }
                 }
             }
-            return count;
+            return count + 1;
         }
     }
 }
