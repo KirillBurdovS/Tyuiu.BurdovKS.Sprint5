@@ -11,6 +11,7 @@ namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
         public string LoadDataAndSave(string path)
         {
 
+
             string str = File.ReadAllText(path);
             int n = 0;
             foreach (char c in str)
@@ -19,7 +20,7 @@ namespace Tyuiu.BurdovKS.Sprint5.Task7.V1.Lib
                     str = str.Replace(Convert.ToString(c), string.Empty);
             }
 
-            string outpath = $@"{Directory.GetCurrentDirectory()}\OutPutDataFileTask7V1.txt";
+            string outpath = $@"{Directory.GetCurrentDirectory()}\OutPutDataFileTask7V1.txt.";
             FileInfo fileinfo = new FileInfo(outpath);
             {
                 if (fileinfo.Exists)
